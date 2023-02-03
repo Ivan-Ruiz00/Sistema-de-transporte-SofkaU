@@ -12,6 +12,7 @@ public abstract class Vehiculo {
     private int capacidad;
     public Vehiculo() {
     }
+    public abstract void ingresoPasajeros();
     public Vehiculo(Viaje viaje, Conductor conductor, PasajerosRepository pasajerosRepository, int anno, int capacidad) {
         this.viaje = viaje;
         this.conductor = conductor;
@@ -19,6 +20,7 @@ public abstract class Vehiculo {
         this.anno = anno;
         this.capacidad = capacidad;
     }
+
     public Viaje getViaje() {
         return viaje;
     }

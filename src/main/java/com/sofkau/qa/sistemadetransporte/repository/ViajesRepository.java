@@ -1,6 +1,6 @@
 package com.sofkau.qa.sistemadetransporte.repository;
 import com.sofkau.qa.sistemadetransporte.repository.models.Viaje;
-import com.sofkau.qa.sistemadetransporte.repository.models.ViajeBuilder;
+import com.sofkau.qa.sistemadetransporte.repository.models.builders.ViajeBuilder;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;

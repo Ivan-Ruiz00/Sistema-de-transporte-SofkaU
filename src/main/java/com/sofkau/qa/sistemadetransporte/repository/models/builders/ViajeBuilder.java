@@ -1,4 +1,6 @@
-package com.sofkau.qa.sistemadetransporte.repository.models;
+package com.sofkau.qa.sistemadetransporte.repository.models.builders;
+import com.sofkau.qa.sistemadetransporte.repository.models.Viaje;
+
 import java.time.LocalDateTime;
 public class ViajeBuilder {
     Viaje viaje;

@@ -1,5 +1,10 @@
 package com.sofkau.qa.sistemadetransporte.repository.models;
 import com.sofkau.qa.sistemadetransporte.repository.PasajerosRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 public abstract class Vehiculo {
     /**
      * Atributos de la clase vehículo
@@ -7,13 +12,16 @@ public abstract class Vehiculo {
     private Viaje viaje;
     private String id;
     private Conductor conductor;
-    private PasajerosRepository pasajerosRepository;
+    private List<Pasajero> pasajeros;
     private int capacidad;
 
     /**
      * Constructor vacío
      */
     public Vehiculo() {
+    }
+    public Vehiculo(int capacidad){
+        pasajeros=new ArrayList<>(capacidad);
     }
 
     /**
@@ -25,14 +33,19 @@ public abstract class Vehiculo {
      * Constructor con todos los parámetros
      * @param viaje nos indica el viaje del vehículo
      * @param conductor nos indica el conductor asignado al vehículo
-     * @param pasajerosRepository nos indica los pasajeros del vehículo
+     * @param pasajeros nos indica los pasajeros del vehículo
      * @param capacidad nos indica la capacidad del vehículo
      */
-    public Vehiculo(Viaje viaje,String id,Conductor conductor, PasajerosRepository pasajerosRepository, int capacidad) {
+    public Vehiculo(Viaje viaje,Conductor conductor, List<Pasajero> pasajeros, int capacidad) {
         this.viaje = viaje;
-        this.id=id;
+        this.id= UUID.randomUUID().toString();
         this.conductor = conductor;
-        this.pasajerosRepository = pasajerosRepository;
+        if (pasajeros.size()==capacidad){
+            this.pasajeros = pasajeros;
+        }else{
+            pasajeros=pasajeros.subList(0,capacidad-1);
+            this.pasajeros=new ArrayList<>(pasajeros);
+        }
         this.capacidad = capacidad;
     }
 
@@ -72,16 +85,22 @@ public abstract class Vehiculo {
      * Nos indica los pasajeros que pasajeros tiene el vehículo
      * @return nos devuelve los pasajeros que tiene el vehículo
      */
-    public PasajerosRepository getPasajerosRepository() {
-        return pasajerosRepository;
+    public List<Pasajero> getPasajeros() {
+        return pasajeros;
     }
 
     /**
      * Nos permite asignarle pasajeros al vehículo.
-     * @param pasajerosRepository nos indica los pasajeros del vehículo.
+     * @param pasajeros nos indica los pasajeros del vehículo.
      */
-    public void setPasajerosRepository(PasajerosRepository pasajerosRepository) {
-        this.pasajerosRepository = pasajerosRepository;
+    public void setPasajeros(List<Pasajero> pasajeros) {
+        if (this.pasajeros==null&&capacidad!=0)
+            if (pasajeros.size()==capacidad)
+                this.pasajeros = pasajeros;
+            else
+                pasajeros=pasajeros.subList(0,capacidad-1);
+        else
+            this.pasajeros=pasajeros;
     }
 
     /**

@@ -1,5 +1,8 @@
 package com.sofkau.qa.sistemadetransporte.repository.models;
 import com.sofkau.qa.sistemadetransporte.repository.PasajerosRepository;
+
+import java.util.List;
+
 public class Bus extends Vehiculo{
     /**
      * Atributos
@@ -15,14 +18,13 @@ public class Bus extends Vehiculo{
     /**
      * Constructor con los parámetros del padre y propios
      * @param viaje nos indica el viaje que hará el vehículo
-     * @param id nos indica el id del vehículo
      * @param conductor nos indica la persona que manejará el bus
-     * @param pasajerosRepository nos indica los pasajeros que tendremos en el vehículo
+     * @param pasajeros nos indica los pasajeros que tendremos en el vehículo
      * @param capacidad nos indica la capacidad del vehículo
      * @param tieneWifi nos indica si el bus posee wi-fi
      */
-    public Bus(Viaje viaje,String id,Conductor conductor, PasajerosRepository pasajerosRepository, int capacidad, boolean tieneWifi) {
-        super(viaje,id,conductor, pasajerosRepository, capacidad);
+    public Bus(Viaje viaje, Conductor conductor, List<Pasajero> pasajeros, int capacidad, boolean tieneWifi) {
+        super(viaje,conductor, pasajeros, capacidad);
         this.tieneWifi = tieneWifi;
     }
 

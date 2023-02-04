@@ -24,7 +24,12 @@ public abstract class Persona {
         this.id = id;
         this.edad = edad;
     }
-
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
     /**
      * Nos indica la forma que tiene la persona de ingresar al vehiculo
      */

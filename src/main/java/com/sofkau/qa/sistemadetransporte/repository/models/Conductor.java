@@ -30,7 +30,6 @@ public class Conductor extends Persona{
         super(nombre, id, edad);
         this.vehiculo=vehiculo;
     }
-
     /**
      * Nos indica el vehículo asignado al conductor
      * @return nos devuelve el vehiculo que manejará el conductor

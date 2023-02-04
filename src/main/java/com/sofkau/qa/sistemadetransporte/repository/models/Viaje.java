@@ -1,14 +1,21 @@
 package com.sofkau.qa.sistemadetransporte.repository.models;
+import com.sofkau.qa.sistemadetransporte.repository.BusesRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 public class Viaje {
     /**
      * atributos de la clase Viaje
      */
+    @Autowired
+    private BusesRepository busesRepository;
     private String origen,destino;
     private LocalDateTime fechaHoraDeSalida,fechaHoraDeLlegada;
     private int distancia;
-
+    private ArrayList<Vehiculo> vehiculos;
     /**
      * Constructor vacío
      */
@@ -29,44 +36,39 @@ public class Viaje {
         this.fechaHoraDeSalida = fechaHoraDeSalida;
         this.fechaHoraDeLlegada = fechaHoraDeLlegada;
         this.distancia = distancia;
+        if (!busesRepository.getVehiculosConViajeAsignado().isEmpty())
+            vehiculos=(ArrayList<Vehiculo>)busesRepository.getVehiculosConViajeAsignado()
+                    .stream().filter(vehiculo -> vehiculo.getViaje()
+                            .getOrigen().equalsIgnoreCase(origen)&&vehiculo.getViaje()
+                            .getDestino().equalsIgnoreCase(destino)).collect(Collectors.toList());
     }
-
     public String getOrigen() {
         return origen;
     }
-
     public void setOrigen(String origen) {
         this.origen = origen;
     }
-
     public String getDestino() {
         return destino;
     }
-
     public void setDestino(String destino) {
         this.destino = destino;
     }
-
     public LocalDateTime getFechaHoraDeSalida() {
         return fechaHoraDeSalida;
     }
-
     public void setFechaHoraDeSalida(LocalDateTime fechaHoraDeSalida) {
         this.fechaHoraDeSalida = fechaHoraDeSalida;
     }
-
     public LocalDateTime getFechaHoraDeLlegada() {
         return fechaHoraDeLlegada;
     }
-
     public void setFechaHoraDeLlegada(LocalDateTime fechaHoraDeLlegada) {
         this.fechaHoraDeLlegada = fechaHoraDeLlegada;
     }
-
     public int getDistancia() {
         return distancia;
     }
-
     public void setDistancia(int distancia) {
         this.distancia = distancia;
     }

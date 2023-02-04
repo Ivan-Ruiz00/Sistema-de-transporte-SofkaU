@@ -30,4 +30,44 @@ public class Viaje {
         this.fechaHoraDeLlegada = fechaHoraDeLlegada;
         this.distancia = distancia;
     }
+
+    public String getOrigen() {
+        return origen;
+    }
+
+    public void setOrigen(String origen) {
+        this.origen = origen;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
+    public LocalDateTime getFechaHoraDeSalida() {
+        return fechaHoraDeSalida;
+    }
+
+    public void setFechaHoraDeSalida(LocalDateTime fechaHoraDeSalida) {
+        this.fechaHoraDeSalida = fechaHoraDeSalida;
+    }
+
+    public LocalDateTime getFechaHoraDeLlegada() {
+        return fechaHoraDeLlegada;
+    }
+
+    public void setFechaHoraDeLlegada(LocalDateTime fechaHoraDeLlegada) {
+        this.fechaHoraDeLlegada = fechaHoraDeLlegada;
+    }
+
+    public int getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(int distancia) {
+        this.distancia = distancia;
+    }
 }

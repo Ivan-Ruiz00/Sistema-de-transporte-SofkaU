@@ -12,13 +12,34 @@ public class BusesRepository{
     List<Vehiculo> vehiculosConViajeAsignado=new ArrayList<>();
 
     /**
-     *
-     * @param vehiculo
+     * Este método nos permite añadir un vehículo disponible a la lista que lo contiene
+     * @param vehiculo nos indica el vehículo disponible
      */
     public void añadirVehiculoDisponible(Vehiculo vehiculo){
         vehiculosDisponibles.add(vehiculo);
     }
+
+    /**
+     * Este método nos permite añadir un vehiculo con viaje asignado
+     * @param vehiculo nos indica el vehículo con viaje asignado
+     */
     public void añadirVehiculoAsignado(Vehiculo vehiculo){
         vehiculosConViajeAsignado.add(vehiculo);
+    }
+
+    /**
+     * Nos permite obtener la lista de los vehículos disponibles
+     * @return devuelve una lista de vehículos disponibles
+     */
+    public List<Vehiculo> getVehiculosDisponibles() {
+        return vehiculosDisponibles;
+    }
+
+    /**
+     * Nos permite obtener la lista de los vehículos asignados
+     * @return devuelve una lista de vehículos con viaje asignado
+     */
+    public List<Vehiculo> getVehiculosConViajeAsignado() {
+        return vehiculosConViajeAsignado;
     }
 }
